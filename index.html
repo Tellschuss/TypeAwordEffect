@@ -1,0 +1,32 @@
+<main id="app">
+	<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 900" preserveAspectRatio="xMidYMid slice">
+		<defs>
+			<filter id="displace" height="900" width="1280">
+				<feImage xlink:href="https://source.unsplash.com/7MX4Clmx-K0/1280x700" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" result="bg"/>
+				<feGaussianBlur stdDeviation="7" in="bg" result="blur" />
+				<feColorMatrix in="blur" type="saturate" values="0" result="desat"/>
+				<feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 0.9 0" result="opaque"/>
+				<feDisplacementMap in="opaque" in2="desat" scale="100" xChannelSelector="R" yChannelSelector="R" result="dist"/>
+				
+				<feGaussianBlur in="dist" stdDeviation="3" result="blurText"/>
+				<feSpecularLighting in="blurText" surfaceScale="5" specularConstant="0.5" specularExponent="10" result="specOut" lighting-color="white">
+					<fePointLight x="-5000" y="-10000" z="20000"/>
+				</feSpecularLighting>
+				<feComposite in="specOut" in2="dist" operator="in" result="specOut2"/>
+				<feComposite in="dist" in2="specOut2" operator="over" result="litPaint" />
+				
+				<!--<feBlend mode="multiply" in="bg" in2="endresult"/>-->
+			</filter>
+		</defs>
+		<image xlink:href="https://source.unsplash.com/7MX4Clmx-K0/1280x700"
+         x="0" y="0" width="100%" height="100%" id="image"
+         preserveAspectRatio="xMidYMid slice"/>
+		<text x="50%" y="50%" font-family="Kalam" alignment-baseline="middle" text-anchor="middle" font-size="8em" fill="#000000" class="text" filter="url(#displace)">{{ text }}  </text>
+	</svg>
+	
+	<label class="input">
+		<input type="text" class="input-el"  v-model="text" /></br>
+		<span class="input-label">Type a word</span>
+	</label>
+	
+</main>
