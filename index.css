@@ -1,0 +1,50 @@
+html {
+	height: 100%;
+	display: flex;
+}
+
+body {
+	position: relative;
+	margin: auto;
+	background: #333;
+	color: #fff;
+	font-family: 'Varela Round', sans-serif;
+}
+
+.text {
+	mix-blend-mode: soft-light;
+}
+
+.svg {
+	width: 100vw;
+	height: 100vh;
+}
+
+.input {
+	position: absolute;
+	bottom: 1em;
+	left: 50%;
+	opacity: 0.7;
+	transform: translate(-50%);
+	
+	&-el {
+		border: none;
+		border-bottom: 2px solid #fff;
+		background-image:none;
+		background-color:transparent;
+		box-shadow: none;
+		margin-top: 2.5em;
+		margin-bottom: 1em;
+		font-size: 1.3em;
+		text-align: center;
+		color: #fff;
+		padding: 0.5em;
+	}
+
+	&-label {
+		display: block;
+		text-transform: uppercase;
+		text-align: center;
+		opacity: 0.7;
+	}
+}
